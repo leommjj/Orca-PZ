@@ -2,6 +2,18 @@
 // 添加批注按钮功能
 
 export async function load(pluginName) {
+  // 动态注入sup样式
+  const style = document.createElement('style');
+  style.textContent = `
+    .orca-inline.sup {
+      display: inline-block;
+      translate: 0 -0.3em;
+      font-size: .7em;
+      margin: 0 .25em;
+    }
+  `;
+  document.head.appendChild(style);
+  
   // 注册批注命令
   orca.commands.registerEditorCommand(
     `${pluginName}.addComment`,
